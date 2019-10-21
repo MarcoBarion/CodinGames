@@ -8,4 +8,4 @@ This is the repository where I save my solution of the codinGame challenges that
 ## Easy
 - [x] ASCII art
 - [ ] Detective Pikaptcha EP2
-- [ ] Brackets, extreme edition
+- [x] Brackets, extreme edition
