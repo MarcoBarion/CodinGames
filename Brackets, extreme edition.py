@@ -1,8 +1,6 @@
 import sys
 import math
 
-# Auto-generated code below aims at helping you parse
-# the standard input according to the problem statement.
 
 def opposite(parentesis):
     if parentesis == '{':
@@ -30,26 +28,25 @@ closed_index = -1
 modified = True
 while modified:
     modified = False
+    open_index = -1
+    closed_index = -1
     
-    for i in li:
-        if i in open_p:
-            open_index = li.index(i)
-        elif i in closed_p:
-            if i == opposite( li[open_index] ):
-                closed_index = li.index(i)
-                li[open_index] = 0
-                li[closed_index] = 0
+    for i in range(len(li)):
+        if li[i] in open_p:
+                open_index = i
+        elif li[i] in closed_p:
+            if open_index != -1 and li[i] == opposite( li[open_index] ):
+                closed_index = i
+                li[open_index] = '0'
+                li[closed_index] = '0'
                 modified = True
-                break
+            
+            break
     
-    
+    print(li, file=sys.stderr)
 
 
 if '(' in li or ')' in li or '[' in li or ']' in li or '{' in li or '}' in li:
     print('false')
 else:
     print('true')
-
-
-# Write an action using print
-# To debug: print("Debug messages...", file=sys.stderr)
