@@ -9,3 +9,4 @@ This is the repository where I save my solution of the codinGame challenges that
 - [x] ASCII art
 - [ ] Detective Pikaptcha EP2
 - [x] Brackets, extreme edition
+- [x] 1×1×1 Rubik’s cube movements
