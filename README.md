@@ -10,3 +10,4 @@ This is the repository where I save my solution of the codinGame challenges that
 - [ ] Detective Pikaptcha EP2
 - [x] Brackets, extreme edition
 - [x] 1×1×1 Rubik’s cube movements
+- [ ] A child's play
