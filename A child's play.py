@@ -26,7 +26,7 @@ def can_move(coordinates, direction):
 
 def turn_clockwise(direction):
     directions = ["U", "R", "D", "L"]
-    return directions[ (directions.index(direction) + 1) % 4]
+    return directions[ (directions.index(direction) + 1) % 4 ]
 
 # INPUT:
 # maze
@@ -66,8 +66,8 @@ position = find_initial_position(maze, w, h)
 for i in range(0, n):
     # We are not taking care of the case that the guy can not rotate more than once
     if not can_move(position, direction):
-        turn_clockwise(direction)
+        direction = turn_clockwise(direction)
     position = move(direction, position)
 
-print( "%(x)d %(y)d" %{"x": position[0], "y": position[1]} )
+print( "%(x)d %(y)d" %{"x": position[1], "y": position[0]} )
 
