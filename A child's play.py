@@ -1,8 +1,6 @@
-import sys
 import math
+import sys
 
-# Auto-generated code below aims at helping you parse
-# the standard input according to the problem statement.
 
 def find_initial_position(maze, w, h):
     for i in range(0, h):
@@ -10,10 +8,10 @@ def find_initial_position(maze, w, h):
             if maze[i][j] == "O":
                 return [i, j]
     
-    # For now it returns -1 try to implement with exceptions
     return -1
 
-def can_move(direction, x, y):
+
+def can_move(maze, direction, x, y):
     
     if direction == "U":
         if maze[ x -1 ][ y ] == "#":
@@ -29,6 +27,7 @@ def can_move(direction, x, y):
             return False
         
     return True
+
 
 def turn_clockwise(direction):
     directions = ["U", "R", "D", "L"]
@@ -46,24 +45,35 @@ def move(direction, coordinates):
         coordinates[1] -=1
 
 
-w, h = [int(i) for i in input().split()]
-n = int(input())
-
-maze = []
-direction = "U"
-position = [0, 0]
-
-for i in range(h):
-    line = input()
-    maze.append(line)
+def main():
+    w, h = [int(i) for i in input().split()]
+    n = int(input())
     
-position = find_initial_position(maze, w, h)
-
-for i in range(0, n):
-    while not can_move(direction, position[0], position[1]):
-        direction = turn_clockwise(direction)
+    maze = []
+    direction = "U"
+    position = [0, 0]
+    my_log = []
+    
+    for i in range(h):
+        line = input()
+        maze.append(line)
         
-    move(direction, position)
+    position = find_initial_position(maze, w, h)
+    my_log.append( [position[0], position[1], direction] )
+    
+    for i in range(0, n):
+        while not can_move(maze, direction, position[0], position[1]):
+            direction = turn_clockwise(direction)
+            
+        move(direction, position)
+        if [position[0], position[1], direction] in my_log:
+            loop = my_log[ my_log.index([position[0], position[1], direction]) : ]
+            position = loop[ (n-i-1) % len(loop) ][0:2]
+            break
+        else:
+            my_log.append( [position[0], position[1], direction] )
+    
+    print( "%(x)d %(y)d" %{"x": position[1], "y": position[0]} )
 
-print( "%(x)d %(y)d" %{"x": position[1], "y": position[0]} )
 
+main()
